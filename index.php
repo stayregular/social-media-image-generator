@@ -1,4 +1,5 @@
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="font-awesome.min.css" />
     <link rel="stylesheet" id="mytheme-ptsanserif-css" href="http://fonts.googleapis.com/css?family=PT+Sans%3A400%2C700%2C400italic%2C700italic&amp;ver=4.7.5" type="text/css" media="all">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.3/webfont.js" type="text/javascript" async=""></script>
@@ -43,9 +44,9 @@ if(!empty($_POST)) {
 	    return $return;     
 	} 
 
-	$name = $_POST['event_name'];
-	$location = $_POST['event_location'];
-	$date = $_POST['event_date'];
+	$name = filter_var(htmlspecialchars($_POST['event_name'], FILTER_SANITIZE_STRING);
+	$location = filter_var(htmlspecialchars($_POST['event_location'], FILTER_SANITIZE_STRING);
+	$date = filter_var(htmlspecialchars($_POST['event_date'], FILTER_SANITIZE_STRING);
 	$url = $_POST['event_url'];
 
 
@@ -137,7 +138,8 @@ if(!empty($_POST)) {
 			}
 
 			form {
-				width:1000px;
+				width:100%;
+				max-width:500px;
 				margin:1em auto;
 			}
 
@@ -149,11 +151,23 @@ if(!empty($_POST)) {
 			label {
 				width:100%;
 				text-transform: uppercase;
+				color:#DDD;
+				transition:color 0.375s;
 			}
 
 			input {
+				padding:0.75em;
+				background:#222;
+				color:#FFF;
+				border:2px solid #333;
+				font-size:16px;
+				transition:padding 0.375s, margin-top 0.375s;
+					}
+
+		      input:focus {
 				padding:1em;
-			}
+				margin-top:3px;
+		      }
 
 			button[type='submit'] {
 				width:100%;
